@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cro-MTVITS Cross-lingual Speech Synthesis Demonstration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+        .description {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #eaf2f8;
+            border-radius: 5px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+            background-color: white; /* 确保表格背景为白色 */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+            color: #000; /* 黑色字体 */
+            background-color: white; /* 白色背景 */
+        }
+        th {
+            background-color: white; /* 表头也改为白色背景 */
+            color: #000; /* 黑色字体 */
+            font-weight: bold;
+            border-bottom: 2px solid #3498db; /* 添加底部边框增强可读性 */
+        }
+        tr:hover {
+            background-color: #f5f5f5; /* 悬停时轻微变色 */
+        }
+        audio {
+            width: 100%;
+            min-width: 200px;
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+        .speaker-header {
+            background-color: white; /* 改为白色背景 */
+            color: #000; /* 黑色字体 */
+            font-weight: bold;
+        }
+        .emotion-cell {
+            font-weight: bold;
+            color: #000; /* 黑色字体 */
+        }
+        .model-name {
+            font-weight: bold;
+            color: #000; /* 黑色字体 */
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cro-MTVITS: An End-to-End Cross-Lingual Speech Synthesis Model for Mandarin and Multi-Dialect Tibetan</h1>
+        
+        <div class="description">
+            <p>This page demonstrates the effectiveness of the Cro-MTVITS model for Cross-Lingual Speech Synthesis Model for Mandarin and Multi-Dialect Tibetan.</p>
+        
+        </div>
+
+
+
+        <h2>Cross-Lingual Speech Synthesis for Mandarin Speaker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Reference Speaker Timbre</th>
+                <th class="Text">text</th>
+            <th class="model-name">VITS-Baseline</th>
+            <th class="model-name">Cro-MTVITS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Speaker 1 -->
+        <tr class="speaker-header">
+            <td rowspan="13">Mandarin_speaker<audio controls><source src="wav\VITS-Baseline\ref_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+         </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB01450027.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT1：在三年时间内，通过科学的饮食和运动。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB01450027_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB01450027_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB03800030.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT2：在球网前站好。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB03800030_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB03800030_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)07581.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT1：བྱ་ཤ་སྲེག་པ་གནད་ལ་ཕོག </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)07581_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)07581_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)09883.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT2：རྨི་ལམ་གྱི་ཞིང་ཁམས་འགྲིམ། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)09883_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)09883_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)01196.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT1：ཁོང་གཞུང་ལམ་བརྒྱུད་ནས་ཡོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)01196_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)01196_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)02724.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT2：གཞུང་གི་རླངས་འཁོར་དེ་བཀག་མ་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)02724_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)02724_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)02915.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT1：ཁྱེད་ཚོར་འབྲེལ་ཡོད་ཀྱི་འཛིན་ཤོག་ཚང་མ་སྤྲད་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)02915_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)02915_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)03119.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT2：ཁྱེད་རང་སྔོན་ལ་ཞིབ་བཤེར་ཞིག་བྱེད། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)03119_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)03119_zh.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+
+                   </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+        <h2>Cross-Lingual Speech Synthesis for Lhasa Speaker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Reference Speaker Timbre</th>
+                <th class="Text">text</th>
+            <th class="model-name">VITS-Baseline</th>
+            <th class="model-name">Cro-MTVITS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Speaker 1 -->
+        <tr class="speaker-header">
+            <td rowspan="13">Lhasa_speaker<audio controls><source src="wav\VITS-Baseline\ref_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+         </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB01450027.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT1：在三年时间内，通过科学的饮食和运动。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB01450027_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB01450027_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB03800030.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT2：在球网前站好。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB03800030_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB03800030_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)07581.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT1：བྱ་ཤ་སྲེག་པ་གནད་ལ་ཕོག </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)07581_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)07581_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)09883.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT2：རྨི་ལམ་གྱི་ཞིང་ཁམས་འགྲིམ། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)09883_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)09883_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)01196.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT1：ཁོང་གཞུང་ལམ་བརྒྱུད་ནས་ཡོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)01196_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)01196_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)02724.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT2：གཞུང་གི་རླངས་འཁོར་དེ་བཀག་མ་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)02724_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)02724_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)02915.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT1：ཁྱེད་ཚོར་འབྲེལ་ཡོད་ཀྱི་འཛིན་ཤོག་ཚང་མ་སྤྲད་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)02915_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)02915_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)03119.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT2：ཁྱེད་རང་སྔོན་ལ་ཞིབ་བཤེར་ཞིག་བྱེད། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)03119_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)03119_wz.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+
+                   </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+        <h2>Cross-Lingual Speech Synthesis for Kham Speaker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Reference Speaker Timbre</th>
+                <th class="Text">text</th>
+            <th class="model-name">VITS-Baseline</th>
+            <th class="model-name">Cro-MTVITS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Speaker 1 -->
+        <tr class="speaker-header">
+            <td rowspan="13">Kham_speaker<audio controls><source src="wav\VITS-Baseline\ref_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+         </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB01450027.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT1：在三年时间内，通过科学的饮食和运动。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB01450027_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB01450027_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB03800030.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT2：在球网前站好。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB03800030_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB03800030_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)07581.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT1：བྱ་ཤ་སྲེག་པ་གནད་ལ་ཕོག </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)07581_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)07581_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)09883.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT2：རྨི་ལམ་གྱི་ཞིང་ཁམས་འགྲིམ། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)09883_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)09883_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)01196.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT1：ཁོང་གཞུང་ལམ་བརྒྱུད་ནས་ཡོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)01196_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)01196_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)02724.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT2：གཞུང་གི་རླངས་འཁོར་དེ་བཀག་མ་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)02724_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)02724_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)02915.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT1：ཁྱེད་ཚོར་འབྲེལ་ཡོད་ཀྱི་འཛིན་ཤོག་ཚང་མ་སྤྲད་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)02915_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)02915_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)03119.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT2：ཁྱེད་རང་སྔོན་ལ་ཞིབ་བཤེར་ཞིག་བྱེད། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)03119_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)03119_kb.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+
+                   </tr>
+    </tbody>
+</table>
+
+
+
+
+
+        <h2>Cross-Lingual Speech Synthesis for Amdo Speaker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Reference Speaker Timbre</th>
+                <th class="Text">text</th>
+            <th class="model-name">VITS-Baseline</th>
+            <th class="model-name">Cro-MTVITS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Speaker 1 -->
+        <tr class="speaker-header">
+            <td rowspan="13">Amdo_speaker<audio controls><source src="wav\VITS-Baseline\ref_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+         </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB01450027.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT1：在三年时间内，通过科学的饮食和运动。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB01450027_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB01450027_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\SSB03800030.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Mandarin_TEXT2：在球网前站好。</td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\ZH\SSB03800030_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\ZH\SSB03800030_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)07581.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT1：བྱ་ཤ་སྲེག་པ་གནད་ལ་ཕོག </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)07581_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)07581_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(wzly)09883.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Lhasa_TEXT2：རྨི་ལམ་གྱི་ཞིང་ཁམས་འགྲིམ། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\WZ\(wzly)09883_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\WZ\(wzly)09883_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)01196.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT1：ཁོང་གཞུང་ལམ་བརྒྱུད་ནས་ཡོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)01196_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)01196_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(kbry)02724.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Kham_TEXT2：གཞུང་གི་རླངས་འཁོར་དེ་བཀག་མ་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\KB\(kbry)02724_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\KB\(kbry)02724_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+        </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)02915.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT1：ཁྱེད་ཚོར་འབྲེལ་ཡོད་ཀྱི་འཛིན་ཤོག་ཚང་མ་སྤྲད་སོང་། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)02915_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)02915_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+     </tr>
+
+            <td class="text-cell"><audio controls><source src="wav\GT\(adry)03119.wav" type="audio/wav">您的浏览器不支持音频元素</audio>Amdo_TEXT2：ཁྱེད་རང་སྔོན་ལ་ཞིབ་བཤེར་ཞིག་བྱེད། </td>
+
+            <td><audio controls><source src="wav\VITS-Baseline\AD\(adry)03119_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+            <td><audio controls><source src="wav\Cro-MTVITS\AD\(adry)03119_ad.wav" type="audio/wav">您的浏览器不支持音频元素</audio></td>
+        </tr>
+
+
+                   </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <div class="loading" id="loading-message">
+            正在加载音频，请稍候...
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loading-message').style.display = 'none';
+            }, 2000);
+            
+            const audioElements = document.querySelectorAll('audio');
+            audioElements.forEach(audio => {
+                audio.addEventListener('play', function() {
+                    audioElements.forEach(otherAudio => {
+                        if (otherAudio !== audio && !otherAudio.paused) {
+                            otherAudio.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
